@@ -5,4 +5,4 @@ Makefile
 Testing
 bpistats
 cmake_install.cmake
-stat_selector_test
+stat_aggregator_test

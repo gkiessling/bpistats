@@ -2,7 +2,7 @@
 #include <boost/property_tree/json_parser.hpp>
 
 //#include "stat_printer.hpp"
-#include "stat_selector.hpp"
+#include "stat_aggregator.hpp"
 
 using namespace boost::property_tree;
 
