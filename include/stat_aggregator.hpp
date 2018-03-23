@@ -22,6 +22,9 @@ public:
     ptree_selector(function<bool(double, double)> bool_comparator)
         : comparator(bool_comparator) {}
 
+    ptree_selector()
+        : comparator([](double, double){ return false; }) {}
+
     virtual ~ptree_selector() {}
 
     void operator()(const pair<string, ptree>& stats_tree)
@@ -49,5 +52,11 @@ class ptree_highest : public ptree_selector
 public:
     ptree_highest() : ptree_selector([](double new_val, double cur_val) { return new_val > cur_val; }) {}
 };
+
+class ptree_lowest : public ptree_selector {};
+class ptree_count : public ptree_selector {};
+class ptree_average : public ptree_selector {};
+class ptree_median : public ptree_selector {};
+class ptree_stddev : public ptree_selector {};
 
 #endif
