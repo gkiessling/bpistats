@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(bpistats)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -O0")
 set(SOURCES src/bpistats.cpp)
 find_package(Boost 1.53.0 REQUIRED COMPONENTS unit_test_framework)
 
 # Main executable
 add_executable(bpistats ${SOURCES})
 target_include_directories(bpistats PUBLIC include)
-#target_link_libraries(bpistats PUBLIC Boost::boost)
+target_link_libraries(bpistats PUBLIC boost_program_options)
 
 # Unit tests
 enable_testing()

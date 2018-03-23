@@ -169,7 +169,6 @@ BOOST_AUTO_TEST_CASE(get_average_empty_returns_zero)
     BOOST_CHECK_EQUAL(0.0, result.second);
 }
 
-#if 0
 BOOST_AUTO_TEST_CASE(get_median_even_returns_no_date)
 {
     pair<string, double> result = aggregate<ptree_median>(test_tree.begin(), test_tree.end());
@@ -198,6 +197,7 @@ BOOST_AUTO_TEST_CASE(get_median_empty_returns_zero)
     BOOST_CHECK_EQUAL(0.0, result.second);
 }
 
+#if 0
 BOOST_AUTO_TEST_CASE(get_stddev_returns_stddev)
 {
     pair<string, double> result = aggregate<ptree_stddev>(test_tree.begin(), test_tree.end());
