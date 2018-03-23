@@ -85,6 +85,10 @@ public:
 };
 
 // -----------------------------------------------------------------------------
+// class ptree_median
+// A ptree_selector that, if the number of values in the provided property tree
+// is even, selects the string/double pair that is the median. If the number of
+// values is odd, calculates the median and sets the string to "".
 // -----------------------------------------------------------------------------
 class ptree_median : public ptree_selector
 {
@@ -241,7 +245,43 @@ public:
 };
 
 // -----------------------------------------------------------------------------
+// class ptree_stddev
+// A ptree_aggregator that calculates the standard deviation of values from the
+// property tree.
 // -----------------------------------------------------------------------------
-class ptree_stddev : public ptree_selector {};
+class ptree_stddev : public ptree_aggregator<double>
+{
+public:
+    ptree_stddev() : ptree_aggregator([this](double& variance, double val)
+        {
+            if (!t)
+            {
+                t = val;
+            }
+            else
+            {
+                t += val;
+                double diff = ((index + 1) * val) - t;
+                variance += (diff * diff) / ((index + 1.0) * index);
+            }
+
+            ++index;
+        }) {}
+
+    pair<string, double> get_result() override
+    {
+        if (!t)
+        {
+            return pair<string, double>("", 0.0);
+        }
+
+        aggregation /= (index - 1);
+        return pair<string, double>("", sqrt(aggregation));
+    }
+
+private:
+    double t = 0.0;
+    size_t index = 0;
+};
 
 #endif

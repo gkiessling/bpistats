@@ -197,21 +197,20 @@ BOOST_AUTO_TEST_CASE(get_median_empty_returns_zero)
     BOOST_CHECK_EQUAL(0.0, result.second);
 }
 
-#if 0
 BOOST_AUTO_TEST_CASE(get_stddev_returns_stddev)
 {
     pair<string, double> result = aggregate<ptree_stddev>(test_tree.begin(), test_tree.end());
     BOOST_CHECK_EQUAL("", result.first);
-    BOOST_CHECK_GT(143.47, result.second);
-    BOOST_CHECK_LT(143.48, result.second);
+    BOOST_CHECK_LT(143.47, result.second);
+    BOOST_CHECK_GT(143.48, result.second);
 }
 
 BOOST_AUTO_TEST_CASE(get_stddev_skips_invalid)
 {
     pair<string, double> result = aggregate<ptree_stddev>(invalid_tree.begin(), invalid_tree.end());
     BOOST_CHECK_EQUAL("", result.first);
-    BOOST_CHECK_GT(78.41, result.second);
-    BOOST_CHECK_LT(78.42, result.second);
+    BOOST_CHECK_LT(78.41, result.second);
+    BOOST_CHECK_GT(78.42, result.second);
 }
 
 BOOST_AUTO_TEST_CASE(get_stddev_empty_returns_zero)
@@ -220,7 +219,6 @@ BOOST_AUTO_TEST_CASE(get_stddev_empty_returns_zero)
     BOOST_CHECK_EQUAL("", result.first);
     BOOST_CHECK_EQUAL(0.0, result.second);
 }
-#endif
 
 BOOST_AUTO_TEST_SUITE_END()
 
