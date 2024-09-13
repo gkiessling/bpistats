@@ -75,7 +75,7 @@ public:
 
 // -----------------------------------------------------------------------------
 // class ptree_lowest
-// A ptree_selector that selects the highest value in the provided property
+// A ptree_selector that selects the lowest value in the provided property
 // tree.
 // -----------------------------------------------------------------------------
 class ptree_lowest : public ptree_selector
